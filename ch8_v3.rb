@@ -10,7 +10,7 @@ end
 
 class Parts
   extend Forwardable
-  def_delegators :@parts, :size, :each
+  def_delegators :parts, :each
   include Enumerable
 
   attr_accessor :parts
@@ -21,16 +21,6 @@ class Parts
 
   def spares
     parts.select { |part| part.needs_spare }
-  end
-
-  private
-
-  def default_chain
-    '10-speed'
-  end
-
-  def default_tire_size
-    raise NotImplementedError
   end
 end
 
